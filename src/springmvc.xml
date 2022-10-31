@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p"
+	   xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	 http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+	<!--扫描控制器-->
+	<context:component-scan base-package="com.ryan.ssm.controller"></context:component-scan>
+	<!--上传组件-->
+	<bean id="commonsMultipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
+	<!--注解方式开发 注解方式的映射器 注解方式的适配器-->
+	<mvc:annotation-driven></mvc:annotation-driven>
+	<!--视图解析器-->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/admin/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+	
+	<!--<mvc:interceptors>
+		<mvc:interceptor>
+			&lt;!&ndash;要拦截的内容&ndash;&gt;
+			<mvc:mapping path="/*/*.action"/>
+			<mvc:exclude-mapping path="/prod/show5.action"/>
+			<mvc:exclude-mapping path="/fore/detailOne.action"/>
+			<mvc:exclude-mapping path="/user/login.action"/>
+			<bean class="com.ryan.ssm.interceptor.LoginInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>-->
+</beans>
